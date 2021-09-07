@@ -8,3 +8,4 @@
 3. Template Engine - Thymeleaf
 4. JPA - Spring Data JPA
 5. DB - H2
+6. Build Tool - Gradle
