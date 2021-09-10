@@ -2,10 +2,11 @@
 ## 2021.09.06 ~
 
 ## 개발 환경
-0. OS - MacOS ()
+0. OS - MacOS (Big Sur 11.0.1)
 1. IDE - IntelliJ (ver.2021.2.1)
 2. Framework - Spring Boot (ver.2.5.4)
-3. Template Engine - Thymeleaf
-4. JPA - Spring Data JPA
-5. DB - H2
-6. Build Tool - Gradle
+3. Language - Java 11
+4. Template Engine - Thymeleaf
+5. JPA - Spring Data JPA
+6. DB - H2
+7. Build Tool - Gradle
