@@ -27,13 +27,7 @@ public class ItemController {
 
     @PostMapping("/items/new")
     public String create(BookForm form) {
-        Book book = new Book();
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
+        Book book = Book.createBook(form);
         itemService.saveItem(book);
 
         return "redirect:/";
@@ -43,28 +37,23 @@ public class ItemController {
     public String list(Model model) {
         List<Item> items = itemService.findItems();
         model.addAttribute("items", items);
+
         return "items/itemList";
     }
 
     @GetMapping("/items/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
         Book item = (Book) itemService.findOne(itemId);
-
-        BookForm form = new BookForm();
-        form.setId(item.getId());
-        form.setName(item.getName());
-        form.setPrice(item.getPrice());
-        form.setStockQuantity(item.getStockQuantity());
-        form.setAuthor(item.getAuthor());
-        form.setIsbn(item.getIsbn());
-
+        BookForm form = BookForm.createBookForm(item);
         model.addAttribute("form", form);
+
         return "items/updateItemForm";
     }
 
     @PostMapping("/items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") BookForm form) {
         itemService.updateItem(form.getId(), form.getName(), form.getPrice(), form.getStockQuantity());
+
         return "redirect:/items";
     }
 }
